@@ -1,0 +1,2 @@
+# Investing.com Collector
+
