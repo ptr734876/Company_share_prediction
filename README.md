@@ -1,4 +1,3 @@
-```html
 <div align="center">
   <!-- Animated Header -->
   <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Multimodal%20Stock%20Prediction%20System&fontSize=40&fontAlignY=35&desc=Where%20Numbers%20Meet%20Narratives&descAlignY=55&animation=twinkling" width="100%"/>
@@ -103,8 +102,7 @@ graph TB
     style D fill:#4CAF50,color:white
     style J fill:#FF6B6B,color:white
     style K fill:#45B7D1,color:white
-```
-
+'''
 <br/>
 
 ## 🔬 **Core Components**
