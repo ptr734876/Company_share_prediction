@@ -71,8 +71,6 @@ graph TB
     style K fill:#45B7D1,color:white
 ```
 
----
-
 ## Core Components
 
 ### 🌐 Universal Data Collector
