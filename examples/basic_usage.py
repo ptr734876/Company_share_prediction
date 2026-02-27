@@ -60,7 +60,7 @@ async def demonstrate_incremental_collection():
     else:
         print("Не удалось собрать данные")
 
-async def demonstrate_full_history():
+async def demonstrate_full_history(symbol: str):
     print("\n" + "="*50)
     print("Демонстрация сбора полной истории")
     print("="*50)
@@ -68,7 +68,6 @@ async def demonstrate_full_history():
     db = data_manager("./date_bases/by_days.db")
     collector = YahooFinanceCollector({'interval': '1d', 'timeout': 100})
     
-    symbol = "AAPL"
     start_date = datetime(2020, 1, 1)
     end_date = datetime.now()
     
@@ -117,4 +116,8 @@ async def main():
 
 if __name__ == "__main__":
     # asyncio.run(main())
-    asyncio.run(demonstrate_full_history())
+    asyncio.run(demonstrate_full_history('YNDX'))
+    # asyncio.run(demonstrate_full_history('AAPL'))
+    # asyncio.run(demonstrate_full_history('GOOGL'))
+    # asyncio.run(demonstrate_full_history('TSLA'))
+    # asyncio.run(demonstrate_full_history('AMZN'))

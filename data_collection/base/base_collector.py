@@ -37,14 +37,14 @@ class base_collector(ABC):
 
     @abstractmethod
     async def fetch_data(self, symbol:str, start_date: datetime,
-                         end_date: datetime) -> List[stock_data]:
+                        end_date: datetime) -> List[stock_data]:
         pass
 
     def validate_config(self) -> bool:
         pass
 
     async def process(self, symbol: str, start_date: datetime,
-                      end_date: datetime) -> List[stock_data]:
+                    end_date: datetime) -> List[stock_data]:
         self.logger.info(f'Starting collection for {symbol} from {start_date} to {end_date}')
         try:
             date = await self.fetch_data(symbol, start_date, end_date)
