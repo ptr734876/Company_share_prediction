@@ -1,2 +1,0 @@
-# MOEX Collector
-

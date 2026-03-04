@@ -1,0 +1,53 @@
+{
+  "aggressive": {
+    "initial_value": 33333.333333333336,
+    "final_value": 33595.63148244222,
+    "total_return": 0.78689444732666,
+    "annual_return": 0.7655458337329168,
+    "max_drawdown": -0.7866323547363281,
+    "sharpe_ratio": 0.8274901391389979,
+    "volatility": 0.9304085610081669,
+    "total_trades": 3,
+    "winning_trades": 2,
+    "losing_trades": 1,
+    "win_rate": 66.66666666666666,
+    "avg_profit": 87.4327163696289,
+    "avg_profit_percent": 1.317814662045244,
+    "profit_factor": 2.000333183079432,
+    "open_positions": 0
+  },
+  "moderate": {
+    "initial_value": 33333.333333333336,
+    "final_value": 33755.85898335775,
+    "total_return": 1.2675769500732421,
+    "annual_return": 1.233107764276542,
+    "max_drawdown": -1.802830959312724,
+    "sharpe_ratio": 0.36075963914376286,
+    "volatility": 3.5879482053166107,
+    "total_trades": 24,
+    "winning_trades": 13,
+    "losing_trades": 11,
+    "win_rate": 54.166666666666664,
+    "avg_profit": 17.605235417683918,
+    "avg_profit_percent": 0.5775031772500738,
+    "profit_factor": 1.2405748471101439,
+    "open_positions": 0
+  },
+  "conservative": {
+    "initial_value": 33333.333333333336,
+    "final_value": 34770.07402547201,
+    "total_return": 4.310222076416015,
+    "annual_return": 4.191322174211476,
+    "max_drawdown": -1.992675304799936,
+    "sharpe_ratio": 1.3426038069967146,
+    "volatility": 3.105985591871164,
+    "total_trades": 16,
+    "winning_trades": 12,
+    "losing_trades": 4,
+    "win_rate": 75.0,
+    "avg_profit": 91.57380104064941,
+    "avg_profit_percent": 3.412919633431854,
+    "profit_factor": 3.0179731250373094,
+    "open_positions": 1
+  }
+}

@@ -4,6 +4,7 @@ from datetime import datetime
 import logging
 from typing import Dict, List, Any, Optional
 
+
 @dataclass
 class stock_data:
     symbol: str
@@ -16,8 +17,9 @@ class stock_data:
     source: str
     raw_data: Optional[Dict] = None
 
+
 class base_collector(ABC):
-    def __init__(self, name:str, config: Dict[str, Any]):
+    def __init__(self, name: str, config: Dict[str, Any]):
         self.name = name
         self.config = config
         self.logger = logging.getLogger(f'{__name__}.{name}')
@@ -36,7 +38,7 @@ class base_collector(ABC):
         self.logger.setLevel(logging.INFO)
 
     @abstractmethod
-    async def fetch_data(self, symbol:str, start_date: datetime,
+    async def fetch_data(self, symbol: str, start_date: datetime,
                         end_date: datetime) -> List[stock_data]:
         pass
 
@@ -69,7 +71,7 @@ class base_collector(ABC):
             self.logger.warning(f'Removed {len(data) - len(valid_data)} invalid records')
         return valid_data
 
-    def _is_valid_record(self, record:stock_data) -> bool:
+    def _is_valid_record(self, record: stock_data) -> bool:
         if not record.timestamp:
             self.logger.debug("Record missing timestamp")
             return False
@@ -82,12 +84,13 @@ class base_collector(ABC):
         if record.close < record.low or record.close > record.high:
             self.logger.debug(f"Close ({record.close}) outside range [{record.low}, {record.high}]")
             return False
-        
+
         if record.open < record.low or record.open > record.high:
             self.logger.debug(f"Open ({record.open}) outside range [{record.low}, {record.high}]")
             return False
 
         if record.volume <= 0:
-            self.logger.debug(f"Non-positive volume: {record.volume}") 
+            self.logger.debug(f"Non-positive volume: {record.volume}")
             return False
         return True
+
