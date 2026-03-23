@@ -1,3 +1,5 @@
-# Collectors Module
-# Реализации конкретных коллекторов данных
 
+__all__ = [
+    'FinnhubCollector',
+    'AlphaVantageCollector'
+]

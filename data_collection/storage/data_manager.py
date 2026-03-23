@@ -32,7 +32,7 @@ class data_manager:
             conn.execute("CREATE INDEX IF NOT EXISTS idx_data_hash ON stock_prices(data_hash)")
 
     def _generate_hash(self, data: stock_data) -> str:
-        hash_string = f"{data.symbol}_{data.timestamp}_{data.source}_{data.close}"
+        hash_string = f"{data.symbol}_{data.timestamp}_{data.source}"
         return hashlib.md5(hash_string.encode()).hexdigest()
 
     def save_data(self, data: List[stock_data]) -> Dict[str, int]:
@@ -110,7 +110,7 @@ class data_manager:
             cursor = conn.execute('''
                 DELETE FROM stock_prices
                 WHERE id NOT IN (
-                    SELECT MIN(id) FROM stock_prices GROUP BY data_hash  -- Исправлено: data_hesh -> data_hash
+                    SELECT MIN(id) FROM stock_prices GROUP BY data_hash
                 )
             ''')
             deleted = cursor.rowcount

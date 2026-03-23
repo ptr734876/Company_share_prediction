@@ -5,22 +5,22 @@ from datetime import datetime, timedelta
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from neuron_network.predictor import StockPredictor, PredictionResult
+from neural_network.predictor import StockPredictor, PredictionResult
 
 DB_NAME = "by_days.db"
 
 def get_db_path(db_name: str = DB_NAME) -> str:
     current_dir = os.path.dirname(os.path.abspath(__file__))
     project_root = os.path.dirname(current_dir)
-    db_path = os.path.join(project_root, 'date_bases', db_name)
+    db_path = os.path.join(project_root, 'databases', db_name)
     
     if not os.path.exists(db_path):
         alt_paths = [
-            os.path.join(project_root, 'date_bases', 'second.db'),
-            os.path.join(current_dir, '..', 'date_bases', db_name),
-            os.path.join(current_dir, 'date_bases', db_name),
-            './date_bases/' + db_name,
-            '../date_bases/' + db_name,
+            os.path.join(project_root, 'databases', 'second.db'),
+            os.path.join(current_dir, '..', 'databases', db_name),
+            os.path.join(current_dir, 'databases', db_name),
+            './databases/' + db_name,
+            '../databases/' + db_name,
         ]
         
         for path in alt_paths:
@@ -74,7 +74,6 @@ async def test_prediction():
     print("Loading model...")
     predictor.load_model("GOOGL_20250101-20260227_by_days")
     
-    # Predict for a period that exists in database
     future_start = datetime(2026, 2, 26)
     future_end = datetime(2026, 2, 27)
     

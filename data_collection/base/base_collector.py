@@ -33,7 +33,8 @@ class base_collector(ABC):
         )
         handler.setFormatter(formatter)
 
-        self.logger.addHandler(handler)
+        if not self.logger.handlers:
+            self.logger.addHandler(handler)
 
         self.logger.setLevel(logging.INFO)
 
@@ -41,16 +42,29 @@ class base_collector(ABC):
     async def fetch_data(self, symbol: str, start_date: datetime,
                         end_date: datetime) -> List[stock_data]:
         pass
-
+    
+    @abstractmethod
     def validate_config(self) -> bool:
-        pass
+        required_fields = ['interval', 'timeout']
+        
+        for field in required_fields:
+            if field not in self.config:
+                self.logger.error(f"Missing required config field: {field}")
+                return False
+        
+        valid_intervals = ['1m', '2m', '5m', '15m', '30m', '60m', '90m', '1h', '1d', '5d', '1wk', '1mo', '3mo']
+        if self.config['interval'] not in valid_intervals:
+            self.logger.error(f"Invalid interval: {self.config['interval']}")
+            return False
+        
+        return True
 
     async def process(self, symbol: str, start_date: datetime,
                     end_date: datetime) -> List[stock_data]:
         self.logger.info(f'Starting collection for {symbol} from {start_date} to {end_date}')
         try:
-            date = await self.fetch_data(symbol, start_date, end_date)
-            validated_data = self._validate_data(date)
+            data = await self.fetch_data(symbol, start_date, end_date)
+            validated_data = self._validate_data(data)
             self.logger.info(f'Successfully collected {len(validated_data)} records')
 
             return validated_data

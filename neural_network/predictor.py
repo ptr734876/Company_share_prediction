@@ -27,7 +27,10 @@ class PredictionResult:
 class StockPredictor:
     def __init__(self, db_path: str, model_dir: str = None):
         self.db_path = db_path
-        self.model_dir = model_dir or os.path.join(os.path.dirname(__file__), 'models')
+        if model_dir is None:
+            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            model_dir = os.path.join(project_root, 'trained_models')
+        self.model_dir = model_dir
         self.data_loader = DataLoader(db_path)
         
         self.model = None
